@@ -13,7 +13,7 @@ const PostContainer = ({
     likeCount,
     isLiked,
     comments,
-    createdAt,
+    createAt,
     caption,
     location
 }) => {
@@ -23,10 +23,10 @@ const PostContainer = ({
     const [currentItem, setCurrentItem] = useState(0);
     const [selfComments, setSelfComments] = useState([]);
     const comment = useInput("");
-    const toggleLikeMutation = useMutation(TOGGLE_LIKE, {
+    const [toggleLikeMutation] = useMutation(TOGGLE_LIKE, {
         variables:{ postId: id }
     });
-    const addCommentMutation = useMutation(ADD_COMMENT, {
+    const [addCommentMutation] = useMutation(ADD_COMMENT, {
         variables: { postId: id, text: comment.value }
     });
     const slide = () => {
@@ -48,7 +48,7 @@ const PostContainer = ({
             setLikeCount(likeCountS -1);
         } else {
             setIsLiked(true);
-            setLikeCount(likeCount +1);
+            setLikeCount(likeCountS +1);
         }
     };
 
@@ -77,7 +77,7 @@ const PostContainer = ({
        caption={caption}
        isLiked={isLikedS}
        comments={comments}
-       createdAt={createdAt}
+       createAt={createAt}
        newComment={comment}
        setIsLiked={setIsLiked}
        setLikeCount={setLikeCount}
@@ -116,7 +116,7 @@ PostContainer.propTypes = {
     ).isRequired,
     caption: PropTypes.string.isRequired,
     location: PropTypes.string,
-    createdAt: PropTypes.string.isRequired
+    createAt: PropTypes.string
 };
 
 export default PostContainer;
