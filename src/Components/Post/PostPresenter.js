@@ -114,7 +114,7 @@ export default ({
     files,
     isLiked,
     likeCount,
-    createAt,
+    createdAt,
     newComment,
     currentItem,
     toggleLike,
@@ -168,7 +168,7 @@ export default ({
               ))}
             </Comments>
           )}
-          {createAt ? (<TimeStamp> {createAt} </TimeStamp>) : (<TimeStamp>""</TimeStamp>)}
+          {createdAt ? (<TimeStamp> {createdAt} </TimeStamp>) : (<TimeStamp>""</TimeStamp>)}
           <Textarea
            onKeyPress={onKeyPress}
            placeholder={"Add a comment..."} 

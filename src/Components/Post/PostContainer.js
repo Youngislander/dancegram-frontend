@@ -13,7 +13,7 @@ const PostContainer = ({
     likeCount,
     isLiked,
     comments,
-    createAt,
+    createdAt,
     caption,
     location
 }) => {
@@ -77,7 +77,7 @@ const PostContainer = ({
        caption={caption}
        isLiked={isLikedS}
        comments={comments}
-       createAt={createAt}
+       createdAt={createdAt}
        newComment={comment}
        setIsLiked={setIsLiked}
        setLikeCount={setLikeCount}
@@ -116,7 +116,7 @@ PostContainer.propTypes = {
     ).isRequired,
     caption: PropTypes.string.isRequired,
     location: PropTypes.string,
-    createAt: PropTypes.string
+    createdAt: PropTypes.string
 };
 
 export default PostContainer;
