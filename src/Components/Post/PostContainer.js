@@ -39,7 +39,7 @@ const PostContainer = ({
             }
         };
         slide();
-    }, [currentItem]);
+    }, [currentItem, files.length]);
 
     const toggleLike = () => {
         toggleLikeMutation();
