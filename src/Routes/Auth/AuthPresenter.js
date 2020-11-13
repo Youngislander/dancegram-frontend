@@ -3,9 +3,19 @@ import { Helmet } from "react-helmet";
 import styled from "styled-components";
 import Input from "../../Components/Input";
 import Button from "../../Components/Button";
+import light from "../../Styles/light.jpg"
+import TweenMax from "gsap/all";
+
 
 const Wrapper = styled.div`
-  min-height: 80vh;
+  background-image:url(${light});
+  background-size:cover;
+  background-repeat:no-repeat;
+  height: 100vh;
+  width:100%;
+  position:absolute;
+  top:0;
+  left:0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,10 +23,11 @@ const Wrapper = styled.div`
 `;
 
 const Box = styled.div`
-  ${props => props.theme.whiteBox}
+  opacity:0.9
   border-radius: 0px;
   width: 100%;
   max-width: 350px;
+  color:white;
 `;
 
 const StateChanger = styled(Box)`
@@ -25,14 +36,38 @@ const StateChanger = styled(Box)`
 `;
 
 const Link = styled.span`
-  color: ${props => props.theme.blueColor};
+  color: white;
   cursor: pointer;
 `;
 
+const TextWrapper= styled.div`{
+  position: relative;
+  -webkit-perspective: 100px;
+          perspective: 100px;
+  text-transform: uppercase;
+}
+`
+const Title = styled.span`
+  text-align:center;
+  font-size:100px;
+  color:white;
+  margin-top:-40px;
+  font-family: 'Hanalei Fill', cursive;
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 10vw;
+
+    
+  &:first-child {
+    position: relative;
+    // transform: translate3d(1px, 1px, 5px);
+  }
+`
+
 const Form = styled(Box)`
-  padding: 40px;
+  padding: 50px 0 10px 0 ;
   padding-bottom: 30px;
-  margin-bottom: 15px;
   form{
       width: 100%;
       input {
@@ -56,8 +91,53 @@ export default ({
     setAction,
     onSubmit,
     secret
-}) => (
+}) => {
+const text = document.querySelectorAll('.text');
+const halfX = window.innerWidth / 2;
+const halfY = window.innerHeight / 2;
+
+text.forEach((el, i) => {
+  TweenMax.to(el, 1, {
+    z: 1 * (i + 8)
+  });
+});
+
+document.addEventListener('mousemove', (e) => {
+  text.forEach((el, i) => {
+    TweenMax.to(el, 0.5, {
+      x: (e.clientX - halfX) * (i + 1) * 0.01,
+      y: (e.clientY - halfY) * (i + 1) * 0.01
+    });
+  });
+})
+return(
     <Wrapper>
+      <TextWrapper>
+        <div className="text">
+                Dancegram
+        </div>
+        <div className="text">
+                Dancegram
+        </div>
+        <div className="text">
+                Dancegram
+        </div>
+        <div className="text">
+                Dancegram
+        </div>
+        <div className="text">
+                Dancegram
+        </div>
+        <div className="text">
+                Dancegram
+        </div>
+        <div className="text">
+                Dancegram
+        </div>
+        <div className="text">
+                Dancegram
+        </div>
+      </TextWrapper>
       <Form>
           {action === "logIn" && (
             <>
@@ -113,4 +193,4 @@ export default ({
       </StateChanger>
      )}
      </Wrapper>
-);
+)}

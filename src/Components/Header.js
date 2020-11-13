@@ -13,7 +13,7 @@ const Header = styled.header`
   position: fixed;
   top: 0;
   left: 0;
-  background-color: white;
+  background-color: black;
   border-bottom: ${props => props.theme.boxBorder};
   border-radius: 0px;
   display: flex;
@@ -44,7 +44,6 @@ const HeaderColumn = styled.div`
 `;
 
 const SearchInput = styled(Input)`
- background-color: ${props => props.theme.bgColor};
  padding: 5px;
  font-size: 14px;
  border-radius: 3px;
